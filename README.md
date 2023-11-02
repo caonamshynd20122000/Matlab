@@ -13,7 +13,7 @@
       + Nhiệm vụ  : NaN  
     -------------------------------------------------------
     - 21200197 : Nguyễn Thị Thúy Quỳnh
-      + Email     : NaN
+      + Email     : nguyenthithuyquynh07@gmail.com
       + Nhiệm vụ  : Viết Chương Trình Tab Nội Suy
     -------------------------------------------------------
     - 21200xxx : Nguyễn Minh Vượng 
