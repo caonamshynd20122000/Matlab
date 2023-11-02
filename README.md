@@ -21,7 +21,7 @@
       + Nhiệm vụ  : Viết Chương Trình Tab Đạo Hàm
     -------------------------------------------------------
     - 21200xxx : Phạm Khánh Linh
-      + Email     : NaN
+      + Email     : k.linh21112003@gmail.com
       + Nhiệm vụ  : Viết Chương Trình Tab Nghiệm + Giới Thiệu Nhóm
     -------------------------------------------------------
     - 21200xxx : Lê Đức Duy
