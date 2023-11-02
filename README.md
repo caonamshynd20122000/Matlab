@@ -32,3 +32,6 @@
       + Email     : NaN
       + Nhiệm vụ  : Viết Chương Trình Tab Hồi Quy
     -------------------------------------------------------
+3. Hướng dẫn gọi biến và tên hàm
+   3.1 Tab Nghiệm
+   ![image](https://github.com/caonamshynd20122000/Matlab/assets/52240138/0f3b45bc-c8b3-4f40-8e4f-c4f40be938fa)
