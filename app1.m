@@ -5,27 +5,42 @@ classdef app1 < matlab.apps.AppBase
         UIFigure                     matlab.ui.Figure
         TabGroup                     matlab.ui.container.TabGroup
         NghiemTab                    matlab.ui.container.Tab
-        SLnLpTextArea                matlab.ui.control.TextArea
-        SLnLpTextAreaLabel           matlab.ui.control.Label
+        soLanLap                     matlab.ui.control.TextArea
+        BnChnLabel_3                 matlab.ui.control.Label
+        kqNghiem                     matlab.ui.control.TextArea
+        BnChnLabel_2                 matlab.ui.control.Label
         Label                        matlab.ui.control.Label
-        KtQuNghimTextArea            matlab.ui.control.TextArea
-        KtQuNghimTextAreaLabel       matlab.ui.control.Label
-        NhpSaiSChoPhpEditField       matlab.ui.control.EditField
+        kqPhuongphap                 matlab.ui.control.TextArea
+        BnChnLabel                   matlab.ui.control.Label
+        saiSo                        matlab.ui.control.EditField
         NhpSaiSChoPhpEditFieldLabel  matlab.ui.control.Label
-        NhpKhongPhnLyNghimEditField  matlab.ui.control.EditField
+        khoangPhanLy                 matlab.ui.control.EditField
         NhpKhongPhnLyNghimEditFieldLabel  matlab.ui.control.Label
-        NhpPhngTrnhEditField         matlab.ui.control.EditField
+        phuongTrinh                  matlab.ui.control.EditField
         NhpPhngTrnhEditFieldLabel_2  matlab.ui.control.Label
-        ChnPhngPhpButtonGroup        matlab.ui.container.ButtonGroup
-        PhngPhpTuynTnhButton         matlab.ui.control.ToggleButton
-        PhngPhpLpButton              matlab.ui.control.ToggleButton
-        PhngPhpChiaiButton           matlab.ui.control.ToggleButton
+        phuongPhap                   matlab.ui.container.ButtonGroup
+        tuyenTinh                    matlab.ui.control.ToggleButton
+        Lap                          matlab.ui.control.ToggleButton
+        chiaDoi                      matlab.ui.control.ToggleButton
         UIAxes                       matlab.ui.control.UIAxes
         NoisuyTab                    matlab.ui.container.Tab
         HoiQuyTab                    matlab.ui.container.Tab
         DaoHamTab                    matlab.ui.container.Tab
         TichPhanTab                  matlab.ui.container.Tab
         GioiThieuNhomTab             matlab.ui.container.Tab
+    end
+
+    % Callbacks that handle component events
+    methods (Access = private)
+
+        % Selection changed function: phuongPhap
+        function phuongPhapSelectionChanged(app, event)
+            selectedButton = app.phuongPhap.SelectedObject;
+            % Thuật toán của T.Quỳnh
+
+            % Thuật toán của T.Quỳnh
+            end
+        end
     end
 
     % Component initialization
@@ -55,26 +70,28 @@ classdef app1 < matlab.apps.AppBase
             zlabel(app.UIAxes, 'Z')
             app.UIAxes.Position = [448 249 552 396];
 
-            % Create ChnPhngPhpButtonGroup
-            app.ChnPhngPhpButtonGroup = uibuttongroup(app.NghiemTab);
-            app.ChnPhngPhpButtonGroup.Title = 'Chọn Phương Pháp';
-            app.ChnPhngPhpButtonGroup.Position = [34 249 371 191];
+            % Create phuongPhap
+            app.phuongPhap = uibuttongroup(app.NghiemTab);
+            app.phuongPhap.SelectionChangedFcn = createCallbackFcn(app, @phuongPhapSelectionChanged, true);
+            app.phuongPhap.Title = 'Chọn Phương Pháp';
+            app.phuongPhap.HandleVisibility = 'off';
+            app.phuongPhap.Position = [34 249 371 191];
 
-            % Create PhngPhpChiaiButton
-            app.PhngPhpChiaiButton = uitogglebutton(app.ChnPhngPhpButtonGroup);
-            app.PhngPhpChiaiButton.Text = 'Phương Pháp Chia Đôi';
-            app.PhngPhpChiaiButton.Position = [11 117 351 43];
-            app.PhngPhpChiaiButton.Value = true;
+            % Create chiaDoi
+            app.chiaDoi = uitogglebutton(app.phuongPhap);
+            app.chiaDoi.Text = 'Phương Pháp Chia Đôi';
+            app.chiaDoi.Position = [11 117 351 43];
+            app.chiaDoi.Value = true;
 
-            % Create PhngPhpLpButton
-            app.PhngPhpLpButton = uitogglebutton(app.ChnPhngPhpButtonGroup);
-            app.PhngPhpLpButton.Text = 'Phương Pháp Lặp';
-            app.PhngPhpLpButton.Position = [11 67 351 43];
+            % Create Lap
+            app.Lap = uitogglebutton(app.phuongPhap);
+            app.Lap.Text = 'Phương Pháp Lặp';
+            app.Lap.Position = [11 67 351 43];
 
-            % Create PhngPhpTuynTnhButton
-            app.PhngPhpTuynTnhButton = uitogglebutton(app.ChnPhngPhpButtonGroup);
-            app.PhngPhpTuynTnhButton.Text = 'Phương Pháp Tuyến Tính';
-            app.PhngPhpTuynTnhButton.Position = [11 16 351 43];
+            % Create tuyenTinh
+            app.tuyenTinh = uitogglebutton(app.phuongPhap);
+            app.tuyenTinh.Text = 'Phương Pháp Tuyến Tính';
+            app.tuyenTinh.Position = [11 16 351 43];
 
             % Create NhpPhngTrnhEditFieldLabel_2
             app.NhpPhngTrnhEditFieldLabel_2 = uilabel(app.NghiemTab);
@@ -82,9 +99,9 @@ classdef app1 < matlab.apps.AppBase
             app.NhpPhngTrnhEditFieldLabel_2.Position = [31 615 112 22];
             app.NhpPhngTrnhEditFieldLabel_2.Text = 'Nhập Phương Trình';
 
-            % Create NhpPhngTrnhEditField
-            app.NhpPhngTrnhEditField = uieditfield(app.NghiemTab, 'text');
-            app.NhpPhngTrnhEditField.Position = [222 606 183 39];
+            % Create phuongTrinh
+            app.phuongTrinh = uieditfield(app.NghiemTab, 'text');
+            app.phuongTrinh.Position = [222 606 183 39];
 
             % Create NhpKhongPhnLyNghimEditFieldLabel
             app.NhpKhongPhnLyNghimEditFieldLabel = uilabel(app.NghiemTab);
@@ -92,9 +109,9 @@ classdef app1 < matlab.apps.AppBase
             app.NhpKhongPhnLyNghimEditFieldLabel.Position = [34 549 173 22];
             app.NhpKhongPhnLyNghimEditFieldLabel.Text = 'Nhập Khoảng Phân Ly Nghiệm ';
 
-            % Create NhpKhongPhnLyNghimEditField
-            app.NhpKhongPhnLyNghimEditField = uieditfield(app.NghiemTab, 'text');
-            app.NhpKhongPhnLyNghimEditField.Position = [222 540 183 39];
+            % Create khoangPhanLy
+            app.khoangPhanLy = uieditfield(app.NghiemTab, 'text');
+            app.khoangPhanLy.Position = [222 540 183 39];
 
             % Create NhpSaiSChoPhpEditFieldLabel
             app.NhpSaiSChoPhpEditFieldLabel = uilabel(app.NghiemTab);
@@ -102,48 +119,65 @@ classdef app1 < matlab.apps.AppBase
             app.NhpSaiSChoPhpEditFieldLabel.Position = [34 481 129 22];
             app.NhpSaiSChoPhpEditFieldLabel.Text = 'Nhập Sai Số Cho Phép';
 
-            % Create NhpSaiSChoPhpEditField
-            app.NhpSaiSChoPhpEditField = uieditfield(app.NghiemTab, 'text');
-            app.NhpSaiSChoPhpEditField.Position = [222 472 183 39];
+            % Create saiSo
+            app.saiSo = uieditfield(app.NghiemTab, 'text');
+            app.saiSo.Position = [222 472 183 39];
 
-            % Create KtQuNghimTextAreaLabel
-            app.KtQuNghimTextAreaLabel = uilabel(app.NghiemTab);
-            app.KtQuNghimTextAreaLabel.BackgroundColor = [1 1 0];
-            app.KtQuNghimTextAreaLabel.HorizontalAlignment = 'center';
-            app.KtQuNghimTextAreaLabel.FontSize = 14;
-            app.KtQuNghimTextAreaLabel.FontWeight = 'bold';
-            app.KtQuNghimTextAreaLabel.Position = [34 178 371 22];
-            app.KtQuNghimTextAreaLabel.Text = 'Kết Quả Nghiệm';
+            % Create BnChnLabel
+            app.BnChnLabel = uilabel(app.NghiemTab);
+            app.BnChnLabel.BackgroundColor = [1 1 0];
+            app.BnChnLabel.HorizontalAlignment = 'center';
+            app.BnChnLabel.FontSize = 14;
+            app.BnChnLabel.FontWeight = 'bold';
+            app.BnChnLabel.Position = [34 178 371 22];
+            app.BnChnLabel.Text = 'Bạn Đã Chọn';
 
-            % Create KtQuNghimTextArea
-            app.KtQuNghimTextArea = uitextarea(app.NghiemTab);
-            app.KtQuNghimTextArea.HorizontalAlignment = 'center';
-            app.KtQuNghimTextArea.FontSize = 36;
-            app.KtQuNghimTextArea.FontWeight = 'bold';
-            app.KtQuNghimTextArea.Position = [34 118 371 48];
-            app.KtQuNghimTextArea.Value = {'134'};
+            % Create kqPhuongphap
+            app.kqPhuongphap = uitextarea(app.NghiemTab);
+            app.kqPhuongphap.Editable = 'off';
+            app.kqPhuongphap.HorizontalAlignment = 'center';
+            app.kqPhuongphap.FontSize = 18;
+            app.kqPhuongphap.FontWeight = 'bold';
+            app.kqPhuongphap.Position = [34 134 371 32];
 
             % Create Label
             app.Label = uilabel(app.NghiemTab);
             app.Label.Position = [34 208 966 22];
             app.Label.Text = '-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------';
 
-            % Create SLnLpTextAreaLabel
-            app.SLnLpTextAreaLabel = uilabel(app.NghiemTab);
-            app.SLnLpTextAreaLabel.BackgroundColor = [1 1 0];
-            app.SLnLpTextAreaLabel.HorizontalAlignment = 'center';
-            app.SLnLpTextAreaLabel.FontSize = 14;
-            app.SLnLpTextAreaLabel.FontWeight = 'bold';
-            app.SLnLpTextAreaLabel.Position = [448 178 552 22];
-            app.SLnLpTextAreaLabel.Text = 'Số Lần Lặp';
+            % Create BnChnLabel_2
+            app.BnChnLabel_2 = uilabel(app.NghiemTab);
+            app.BnChnLabel_2.BackgroundColor = [1 1 0];
+            app.BnChnLabel_2.HorizontalAlignment = 'center';
+            app.BnChnLabel_2.FontSize = 14;
+            app.BnChnLabel_2.FontWeight = 'bold';
+            app.BnChnLabel_2.Position = [448 178 250 22];
+            app.BnChnLabel_2.Text = 'Kết Quả Nghiệm';
 
-            % Create SLnLpTextArea
-            app.SLnLpTextArea = uitextarea(app.NghiemTab);
-            app.SLnLpTextArea.HorizontalAlignment = 'center';
-            app.SLnLpTextArea.FontSize = 36;
-            app.SLnLpTextArea.FontWeight = 'bold';
-            app.SLnLpTextArea.Position = [448 118 552 48];
-            app.SLnLpTextArea.Value = {'134'};
+            % Create kqNghiem
+            app.kqNghiem = uitextarea(app.NghiemTab);
+            app.kqNghiem.Editable = 'off';
+            app.kqNghiem.HorizontalAlignment = 'center';
+            app.kqNghiem.FontSize = 18;
+            app.kqNghiem.FontWeight = 'bold';
+            app.kqNghiem.Position = [448 134 250 32];
+
+            % Create BnChnLabel_3
+            app.BnChnLabel_3 = uilabel(app.NghiemTab);
+            app.BnChnLabel_3.BackgroundColor = [1 1 0];
+            app.BnChnLabel_3.HorizontalAlignment = 'center';
+            app.BnChnLabel_3.FontSize = 14;
+            app.BnChnLabel_3.FontWeight = 'bold';
+            app.BnChnLabel_3.Position = [748 178 252 22];
+            app.BnChnLabel_3.Text = 'Số Lần Lặp';
+
+            % Create soLanLap
+            app.soLanLap = uitextarea(app.NghiemTab);
+            app.soLanLap.Editable = 'off';
+            app.soLanLap.HorizontalAlignment = 'center';
+            app.soLanLap.FontSize = 18;
+            app.soLanLap.FontWeight = 'bold';
+            app.soLanLap.Position = [748 134 252 32];
 
             % Create NoisuyTab
             app.NoisuyTab = uitab(app.TabGroup);
