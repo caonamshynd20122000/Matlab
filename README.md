@@ -32,5 +32,3 @@
       + Email     : NaN
       + Nhiệm vụ  : Viết Chương Trình Tab Hồi Quy
     -------------------------------------------------------
-3. Hướng dẫn gọi tên các biến, hàm
-   -    
