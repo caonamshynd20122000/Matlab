@@ -38,7 +38,18 @@ classdef app1 < matlab.apps.AppBase
             selectedButton = app.phuongPhap.SelectedObject;
             % ================ Đây là nơi làm việc của Thúy Quỳnh =======
 
-
+            if selectedButton == app.chiaDoi
+                % Nếu chọn nút "Phương Pháp Chia Đôi"
+                saiSoValue = str2double(app.saiSo.Value);
+                gopDoiValue = saiSoValue * 2;
+                app.kqNghiem.Value = {num2str(gopDoiValue)};
+                app.kqPhuongphap.Value = "Phương Pháp Chia Đôi";
+            elseif selectedButton == app.Lap
+                % Xử lý khi chọn nút "Phương Pháp Lặp"
+                % Thêm code xử lý tại đây
+            elseif selectedButton == app.tuyenTinh
+                % Xử lý khi chọn nút "Phương Pháp Tuyến Tính"
+                % Thêm code xử lý tại đây
 
 
 
