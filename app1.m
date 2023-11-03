@@ -36,10 +36,15 @@ classdef app1 < matlab.apps.AppBase
         % Selection changed function: phuongPhap
         function phuongPhapSelectionChanged(app, event)
             selectedButton = app.phuongPhap.SelectedObject;
-            % Thuật toán của T.Quỳnh
+            % ================ Đây là nơi làm việc của Thúy Quỳnh =======
 
-            % Thuật toán của T.Quỳnh
-            end
+
+
+
+
+            
+            % ================ Đây là nơi làm việc của Thúy Quỳnh =======
+            
         end
     end
 
