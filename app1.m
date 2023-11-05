@@ -55,6 +55,7 @@ classdef app1 < matlab.apps.AppBase
 
             
             % ================ Đây là nơi làm việc của Thúy Quỳnh =======
+            end
             
         end
     end
