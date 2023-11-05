@@ -49,6 +49,16 @@ classdef project_team < matlab.apps.AppBase
         function phuongPhapSelectionChanged(app, event)
             selectedButton = app.phuongPhap.SelectedObject;
         % Day la thuan toan cua Thuy Quynh
+
+        saiSoValue = app.saiSo.Value;
+        if selectedButton == app.chiaDoi
+            kq = saiSoValue * 2;
+        elseif selectedButton == app.Lap
+            kq = saiSoValue +saiSoValue +2;
+        elseif selectedButton == app.tuyenTInh
+            kq = saiSoValue - 1;
+        end
+        app.kqNghiem.Value = num2str(kq);
         
         
         % Day la thuan toan cua Thuy Quynh
