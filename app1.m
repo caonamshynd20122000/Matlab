@@ -33,20 +33,10 @@ classdef project_team < matlab.apps.AppBase
         GreenFETTeamLabel             matlab.ui.control.Label
         Button                        matlab.ui.control.Button
         Button_2                      matlab.ui.control.Button
-        Image                         matlab.ui.control.Image
-        ButtonGroup                   matlab.ui.container.ButtonGroup
-        Button_3                      matlab.ui.control.RadioButton
-        Button2                       matlab.ui.control.RadioButton
-        Button3                       matlab.ui.control.RadioButton
     end
 
     % Callbacks that handle component events
     methods (Access = private)
-
-        % Image clicked function: Image
-        function ImageClicked(app, event)
-            
-        end
 
         % Selection changed function: phuongPhap
         function phuongPhapSelectionChanged(app, event)
@@ -219,34 +209,6 @@ classdef project_team < matlab.apps.AppBase
             app.Button_2 = uibutton(app.GioiThieuNhomTab, 'push');
             app.Button_2.Position = [32 252 51 22];
             app.Button_2.Text = '<';
-
-            % Create Image
-            app.Image = uiimage(app.GioiThieuNhomTab);
-            app.Image.ImageClickedFcn = createCallbackFcn(app, @ImageClicked, true);
-            app.Image.VerticalAlignment = 'bottom';
-            app.Image.Position = [207 190 203 170];
-            app.Image.ImageSource = '1.jpg';
-
-            % Create ButtonGroup
-            app.ButtonGroup = uibuttongroup(app.ConBoCon);
-            app.ButtonGroup.Title = 'Button Group';
-            app.ButtonGroup.Position = [173 -55 167 106];
-
-            % Create Button_3
-            app.Button_3 = uiradiobutton(app.ButtonGroup);
-            app.Button_3.Text = 'Button';
-            app.Button_3.Position = [11 60 58 22];
-            app.Button_3.Value = true;
-
-            % Create Button2
-            app.Button2 = uiradiobutton(app.ButtonGroup);
-            app.Button2.Text = 'Button2';
-            app.Button2.Position = [11 38 65 22];
-
-            % Create Button3
-            app.Button3 = uiradiobutton(app.ButtonGroup);
-            app.Button3.Text = 'Button3';
-            app.Button3.Position = [11 16 65 22];
 
             % Show the figure after all components are created
             app.ConBoCon.Visible = 'on';
