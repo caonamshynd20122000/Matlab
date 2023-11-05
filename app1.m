@@ -26,6 +26,13 @@ classdef project_team < matlab.apps.AppBase
         SLnLpTextAreaLabel            matlab.ui.control.Label
         kqSoLanLap                    matlab.ui.control.TextArea
         noiSuyTab                     matlab.ui.container.Tab
+        NhpDLiuxLabel                 matlab.ui.control.Label
+        nhapX                         matlab.ui.control.NumericEditField
+        NhpDLiuyLabel                 matlab.ui.control.Label
+        ChnPhngPhpNiSuyButtonGroup    matlab.ui.container.ButtonGroup
+        NiSuyLarangeButton            matlab.ui.control.RadioButton
+        NiSuyNewtonButton             matlab.ui.control.RadioButton
+        nhapY                         matlab.ui.control.NumericEditField
         hoiQuyTab                     matlab.ui.container.Tab
         daoHamTab                     matlab.ui.container.Tab
         tichPhanTab                   matlab.ui.container.Tab
@@ -174,6 +181,40 @@ classdef project_team < matlab.apps.AppBase
             % Create noiSuyTab
             app.noiSuyTab = uitab(app.TabGroup);
             app.noiSuyTab.Title = 'Nội Suy';
+
+            % Create NhpDLiuyLabel
+            app.NhpDLiuyLabel = uilabel(app.noiSuyTab);
+            app.NhpDLiuyLabel.Position = [15 353 170 30];
+            app.NhpDLiuyLabel.Text = 'Nhập Dữ Liệu y';
+
+            % Create nhapY
+            app.nhapY = uieditfield(app.noiSuyTab, 'numeric');
+            app.nhapY.Position = [200 353 120 30];
+
+            % Create NhpDLiuxLabel
+            app.NhpDLiuxLabel = uilabel(app.noiSuyTab);
+            app.NhpDLiuxLabel.Position = [15 402 170 30];
+            app.NhpDLiuxLabel.Text = 'Nhập Dữ Liệu x';
+
+            % Create nhapX
+            app.nhapX = uieditfield(app.noiSuyTab, 'numeric');
+            app.nhapX.Position = [200 402 120 30];
+
+            % Create ChnPhngPhpNiSuyButtonGroup
+            app.ChnPhngPhpNiSuyButtonGroup = uibuttongroup(app.noiSuyTab);
+            app.ChnPhngPhpNiSuyButtonGroup.Title = 'Chọn Phương Pháp Nội Suy';
+            app.ChnPhngPhpNiSuyButtonGroup.Position = [15 186 305 130];
+
+            % Create NiSuyLarangeButton
+            app.NiSuyLarangeButton = uiradiobutton(app.ChnPhngPhpNiSuyButtonGroup);
+            app.NiSuyLarangeButton.Text = '                            Nội Suy Larange';
+            app.NiSuyLarangeButton.Position = [11 78 282 22];
+            app.NiSuyLarangeButton.Value = true;
+
+            % Create NiSuyNewtonButton
+            app.NiSuyNewtonButton = uiradiobutton(app.ChnPhngPhpNiSuyButtonGroup);
+            app.NiSuyNewtonButton.Text = '                            Nội Suy Newton';
+            app.NiSuyNewtonButton.Position = [11 43 282 22];
 
             % Create hoiQuyTab
             app.hoiQuyTab = uitab(app.TabGroup);
