@@ -1,62 +1,60 @@
-classdef app1 < matlab.apps.AppBase
+classdef project_team < matlab.apps.AppBase
 
     % Properties that correspond to app components
     properties (Access = public)
-        UIFigure                     matlab.ui.Figure
-        TabGroup                     matlab.ui.container.TabGroup
-        NghiemTab                    matlab.ui.container.Tab
-        soLanLap                     matlab.ui.control.TextArea
-        BnChnLabel_3                 matlab.ui.control.Label
-        kqNghiem                     matlab.ui.control.TextArea
-        BnChnLabel_2                 matlab.ui.control.Label
-        Label                        matlab.ui.control.Label
-        kqPhuongphap                 matlab.ui.control.TextArea
-        BnChnLabel                   matlab.ui.control.Label
-        saiSo                        matlab.ui.control.EditField
-        NhpSaiSChoPhpEditFieldLabel  matlab.ui.control.Label
-        khoangPhanLy                 matlab.ui.control.EditField
+        ConBoCon                      matlab.ui.Figure
+        FileMenu                      matlab.ui.container.Menu
+        HomeMenu                      matlab.ui.container.Menu
+        TabGroup                      matlab.ui.container.TabGroup
+        nghiemTab                     matlab.ui.container.Tab
+        NhpPhngTrnhEditFieldLabel     matlab.ui.control.Label
+        phuongTrinh                   matlab.ui.control.EditField
         NhpKhongPhnLyNghimEditFieldLabel  matlab.ui.control.Label
-        phuongTrinh                  matlab.ui.control.EditField
-        NhpPhngTrnhEditFieldLabel_2  matlab.ui.control.Label
-        phuongPhap                   matlab.ui.container.ButtonGroup
-        tuyenTinh                    matlab.ui.control.ToggleButton
-        Lap                          matlab.ui.control.ToggleButton
-        chiaDoi                      matlab.ui.control.ToggleButton
-        UIAxes                       matlab.ui.control.UIAxes
-        NoisuyTab                    matlab.ui.container.Tab
-        HoiQuyTab                    matlab.ui.container.Tab
-        DaoHamTab                    matlab.ui.container.Tab
-        TichPhanTab                  matlab.ui.container.Tab
-        GioiThieuNhomTab             matlab.ui.container.Tab
+        phanLyNghiem                  matlab.ui.control.NumericEditField
+        SaiSChoPhpEditFieldLabel      matlab.ui.control.Label
+        saiSo                         matlab.ui.control.NumericEditField
+        phuongPhap                    matlab.ui.container.ButtonGroup
+        chiaDoi                       matlab.ui.control.ToggleButton
+        Lap                           matlab.ui.control.ToggleButton
+        tuyenTInh                     matlab.ui.control.ToggleButton
+        Label                         matlab.ui.control.Label
+        UIAxes                        matlab.ui.control.UIAxes
+        ChnTextAreaLabel              matlab.ui.control.Label
+        kqChon                        matlab.ui.control.TextArea
+        NghimCaPhngTrnhTextAreaLabel  matlab.ui.control.Label
+        kqNghiem                      matlab.ui.control.TextArea
+        SLnLpTextAreaLabel            matlab.ui.control.Label
+        kqSoLanLap                    matlab.ui.control.TextArea
+        noiSuyTab                     matlab.ui.container.Tab
+        hoiQuyTab                     matlab.ui.container.Tab
+        daoHamTab                     matlab.ui.container.Tab
+        tichPhanTab                   matlab.ui.container.Tab
+        GioiThieuNhomTab              matlab.ui.container.Tab
+        GreenFETTeamLabel             matlab.ui.control.Label
+        Button                        matlab.ui.control.Button
+        Button_2                      matlab.ui.control.Button
+        Image                         matlab.ui.control.Image
+        ButtonGroup                   matlab.ui.container.ButtonGroup
+        Button_3                      matlab.ui.control.RadioButton
+        Button2                       matlab.ui.control.RadioButton
+        Button3                       matlab.ui.control.RadioButton
     end
 
     % Callbacks that handle component events
     methods (Access = private)
 
+        % Image clicked function: Image
+        function ImageClicked(app, event)
+            
+        end
+
         % Selection changed function: phuongPhap
         function phuongPhapSelectionChanged(app, event)
             selectedButton = app.phuongPhap.SelectedObject;
-            % ================ Đây là nơi làm việc của Thúy Quỳnh =======
-
-            if selectedButton == app.chiaDoi
-                % Nếu chọn nút "Phương Pháp Chia Đôi"
-                saiSoValue = str2double(app.saiSo.Value);
-                gopDoiValue = saiSoValue * 2;
-                app.kqNghiem.Value = {num2str(gopDoiValue)};
-                app.kqPhuongphap.Value = "Phương Pháp Chia Đôi";
-            elseif selectedButton == app.Lap
-                % Xử lý khi chọn nút "Phương Pháp Lặp"
-                % Thêm code xử lý tại đây
-            elseif selectedButton == app.tuyenTinh
-                % Xử lý khi chọn nút "Phương Pháp Tuyến Tính"
-                % Thêm code xử lý tại đây
-
-
-
-            
-            % ================ Đây là nơi làm việc của Thúy Quỳnh =======
-            end
-            
+        % Day la thuan toan cua Thuy Quynh
+        
+        
+        % Day la thuan toan cua Thuy Quynh
         end
     end
 
@@ -66,158 +64,192 @@ classdef app1 < matlab.apps.AppBase
         % Create UIFigure and components
         function createComponents(app)
 
-            % Create UIFigure and hide until all components are created
-            app.UIFigure = uifigure('Visible', 'off');
-            app.UIFigure.Position = [100 100 1032 729];
-            app.UIFigure.Name = 'MATLAB App';
+            % Create ConBoCon and hide until all components are created
+            app.ConBoCon = uifigure('Visible', 'off');
+            app.ConBoCon.Position = [100 100 675 480];
+            app.ConBoCon.Name = 'UI Figure';
+
+            % Create FileMenu
+            app.FileMenu = uimenu(app.ConBoCon);
+            app.FileMenu.Text = 'File';
+
+            % Create HomeMenu
+            app.HomeMenu = uimenu(app.ConBoCon);
+            app.HomeMenu.Text = 'Home';
 
             % Create TabGroup
-            app.TabGroup = uitabgroup(app.UIFigure);
-            app.TabGroup.Position = [1 1 1032 729];
+            app.TabGroup = uitabgroup(app.ConBoCon);
+            app.TabGroup.Position = [1 1 675 480];
 
-            % Create NghiemTab
-            app.NghiemTab = uitab(app.TabGroup);
-            app.NghiemTab.Title = 'Nghiệm';
+            % Create nghiemTab
+            app.nghiemTab = uitab(app.TabGroup);
+            app.nghiemTab.Title = 'Nghiệm';
 
-            % Create UIAxes
-            app.UIAxes = uiaxes(app.NghiemTab);
-            title(app.UIAxes, 'Đồ Thị Phương Trình F(x)')
-            xlabel(app.UIAxes, 'Trục Hoành (x)')
-            ylabel(app.UIAxes, 'Trục Tung (y)')
-            zlabel(app.UIAxes, 'Z')
-            app.UIAxes.Position = [448 249 552 396];
+            % Create NhpPhngTrnhEditFieldLabel
+            app.NhpPhngTrnhEditFieldLabel = uilabel(app.nghiemTab);
+            app.NhpPhngTrnhEditFieldLabel.Position = [15 402 120 30];
+            app.NhpPhngTrnhEditFieldLabel.Text = 'Nhập Phương Trình';
+
+            % Create phuongTrinh
+            app.phuongTrinh = uieditfield(app.nghiemTab, 'text');
+            app.phuongTrinh.Position = [200 402 120 30];
+
+            % Create NhpKhongPhnLyNghimEditFieldLabel
+            app.NhpKhongPhnLyNghimEditFieldLabel = uilabel(app.nghiemTab);
+            app.NhpKhongPhnLyNghimEditFieldLabel.Position = [15 353 170 30];
+            app.NhpKhongPhnLyNghimEditFieldLabel.Text = 'Nhập Khoảng Phân Ly Nghiệm';
+
+            % Create phanLyNghiem
+            app.phanLyNghiem = uieditfield(app.nghiemTab, 'numeric');
+            app.phanLyNghiem.Position = [200 353 120 30];
+
+            % Create SaiSChoPhpEditFieldLabel
+            app.SaiSChoPhpEditFieldLabel = uilabel(app.nghiemTab);
+            app.SaiSChoPhpEditFieldLabel.Position = [15 304 170 30];
+            app.SaiSChoPhpEditFieldLabel.Text = 'Sai Số Cho Phép';
+
+            % Create saiSo
+            app.saiSo = uieditfield(app.nghiemTab, 'numeric');
+            app.saiSo.Position = [200 304 120 30];
 
             % Create phuongPhap
-            app.phuongPhap = uibuttongroup(app.NghiemTab);
+            app.phuongPhap = uibuttongroup(app.nghiemTab);
             app.phuongPhap.SelectionChangedFcn = createCallbackFcn(app, @phuongPhapSelectionChanged, true);
+            app.phuongPhap.Tooltip = {''};
             app.phuongPhap.Title = 'Chọn Phương Pháp';
             app.phuongPhap.HandleVisibility = 'off';
-            app.phuongPhap.Position = [34 249 371 191];
+            app.phuongPhap.Position = [14 154 306 127];
 
             % Create chiaDoi
             app.chiaDoi = uitogglebutton(app.phuongPhap);
             app.chiaDoi.Text = 'Phương Pháp Chia Đôi';
-            app.chiaDoi.Position = [11 117 351 43];
+            app.chiaDoi.Position = [11 74 287 22];
             app.chiaDoi.Value = true;
 
             % Create Lap
             app.Lap = uitogglebutton(app.phuongPhap);
             app.Lap.Text = 'Phương Pháp Lặp';
-            app.Lap.Position = [11 67 351 43];
+            app.Lap.Position = [11 43 287 22];
 
-            % Create tuyenTinh
-            app.tuyenTinh = uitogglebutton(app.phuongPhap);
-            app.tuyenTinh.Text = 'Phương Pháp Tuyến Tính';
-            app.tuyenTinh.Position = [11 16 351 43];
-
-            % Create NhpPhngTrnhEditFieldLabel_2
-            app.NhpPhngTrnhEditFieldLabel_2 = uilabel(app.NghiemTab);
-            app.NhpPhngTrnhEditFieldLabel_2.HorizontalAlignment = 'right';
-            app.NhpPhngTrnhEditFieldLabel_2.Position = [31 615 112 22];
-            app.NhpPhngTrnhEditFieldLabel_2.Text = 'Nhập Phương Trình';
-
-            % Create phuongTrinh
-            app.phuongTrinh = uieditfield(app.NghiemTab, 'text');
-            app.phuongTrinh.Position = [222 606 183 39];
-
-            % Create NhpKhongPhnLyNghimEditFieldLabel
-            app.NhpKhongPhnLyNghimEditFieldLabel = uilabel(app.NghiemTab);
-            app.NhpKhongPhnLyNghimEditFieldLabel.HorizontalAlignment = 'right';
-            app.NhpKhongPhnLyNghimEditFieldLabel.Position = [34 549 173 22];
-            app.NhpKhongPhnLyNghimEditFieldLabel.Text = 'Nhập Khoảng Phân Ly Nghiệm ';
-
-            % Create khoangPhanLy
-            app.khoangPhanLy = uieditfield(app.NghiemTab, 'text');
-            app.khoangPhanLy.Position = [222 540 183 39];
-
-            % Create NhpSaiSChoPhpEditFieldLabel
-            app.NhpSaiSChoPhpEditFieldLabel = uilabel(app.NghiemTab);
-            app.NhpSaiSChoPhpEditFieldLabel.HorizontalAlignment = 'right';
-            app.NhpSaiSChoPhpEditFieldLabel.Position = [34 481 129 22];
-            app.NhpSaiSChoPhpEditFieldLabel.Text = 'Nhập Sai Số Cho Phép';
-
-            % Create saiSo
-            app.saiSo = uieditfield(app.NghiemTab, 'text');
-            app.saiSo.Position = [222 472 183 39];
-
-            % Create BnChnLabel
-            app.BnChnLabel = uilabel(app.NghiemTab);
-            app.BnChnLabel.BackgroundColor = [1 1 0];
-            app.BnChnLabel.HorizontalAlignment = 'center';
-            app.BnChnLabel.FontSize = 14;
-            app.BnChnLabel.FontWeight = 'bold';
-            app.BnChnLabel.Position = [34 178 371 22];
-            app.BnChnLabel.Text = 'Bạn Đã Chọn';
-
-            % Create kqPhuongphap
-            app.kqPhuongphap = uitextarea(app.NghiemTab);
-            app.kqPhuongphap.Editable = 'off';
-            app.kqPhuongphap.HorizontalAlignment = 'center';
-            app.kqPhuongphap.FontSize = 18;
-            app.kqPhuongphap.FontWeight = 'bold';
-            app.kqPhuongphap.Position = [34 134 371 32];
+            % Create tuyenTInh
+            app.tuyenTInh = uitogglebutton(app.phuongPhap);
+            app.tuyenTInh.Text = 'Phương Pháp Tuyến Tính';
+            app.tuyenTInh.Position = [11 14 287 22];
 
             % Create Label
-            app.Label = uilabel(app.NghiemTab);
-            app.Label.Position = [34 208 966 22];
-            app.Label.Text = '-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------';
+            app.Label = uilabel(app.nghiemTab);
+            app.Label.Position = [14 122 660 22];
+            app.Label.Text = '-------------------------------------------------------------------------------------------------------------------------------------------------------------------';
 
-            % Create BnChnLabel_2
-            app.BnChnLabel_2 = uilabel(app.NghiemTab);
-            app.BnChnLabel_2.BackgroundColor = [1 1 0];
-            app.BnChnLabel_2.HorizontalAlignment = 'center';
-            app.BnChnLabel_2.FontSize = 14;
-            app.BnChnLabel_2.FontWeight = 'bold';
-            app.BnChnLabel_2.Position = [448 178 250 22];
-            app.BnChnLabel_2.Text = 'Kết Quả Nghiệm';
+            % Create UIAxes
+            app.UIAxes = uiaxes(app.nghiemTab);
+            title(app.UIAxes, 'ĐỒ THỊ HÀM SỐ')
+            xlabel(app.UIAxes, 'x')
+            ylabel(app.UIAxes, 'y')
+            app.UIAxes.Position = [327 154 338 278];
+
+            % Create ChnTextAreaLabel
+            app.ChnTextAreaLabel = uilabel(app.nghiemTab);
+            app.ChnTextAreaLabel.HorizontalAlignment = 'center';
+            app.ChnTextAreaLabel.Position = [61 92 57 31];
+            app.ChnTextAreaLabel.Text = 'Đã Chọn';
+
+            % Create kqChon
+            app.kqChon = uitextarea(app.nghiemTab);
+            app.kqChon.Editable = 'off';
+            app.kqChon.Position = [15 60 150 33];
+
+            % Create NghimCaPhngTrnhTextAreaLabel
+            app.NghimCaPhngTrnhTextAreaLabel = uilabel(app.nghiemTab);
+            app.NghimCaPhngTrnhTextAreaLabel.HorizontalAlignment = 'center';
+            app.NghimCaPhngTrnhTextAreaLabel.Position = [263 89 150 31];
+            app.NghimCaPhngTrnhTextAreaLabel.Text = 'Nghiệm Của Phương Trình';
 
             % Create kqNghiem
-            app.kqNghiem = uitextarea(app.NghiemTab);
+            app.kqNghiem = uitextarea(app.nghiemTab);
             app.kqNghiem.Editable = 'off';
-            app.kqNghiem.HorizontalAlignment = 'center';
-            app.kqNghiem.FontSize = 18;
-            app.kqNghiem.FontWeight = 'bold';
-            app.kqNghiem.Position = [448 134 250 32];
+            app.kqNghiem.Position = [263 57 150 33];
 
-            % Create BnChnLabel_3
-            app.BnChnLabel_3 = uilabel(app.NghiemTab);
-            app.BnChnLabel_3.BackgroundColor = [1 1 0];
-            app.BnChnLabel_3.HorizontalAlignment = 'center';
-            app.BnChnLabel_3.FontSize = 14;
-            app.BnChnLabel_3.FontWeight = 'bold';
-            app.BnChnLabel_3.Position = [748 178 252 22];
-            app.BnChnLabel_3.Text = 'Số Lần Lặp';
+            % Create SLnLpTextAreaLabel
+            app.SLnLpTextAreaLabel = uilabel(app.nghiemTab);
+            app.SLnLpTextAreaLabel.HorizontalAlignment = 'center';
+            app.SLnLpTextAreaLabel.Position = [515 92 150 31];
+            app.SLnLpTextAreaLabel.Text = 'Số Lần Lặp';
 
-            % Create soLanLap
-            app.soLanLap = uitextarea(app.NghiemTab);
-            app.soLanLap.Editable = 'off';
-            app.soLanLap.HorizontalAlignment = 'center';
-            app.soLanLap.FontSize = 18;
-            app.soLanLap.FontWeight = 'bold';
-            app.soLanLap.Position = [748 134 252 32];
+            % Create kqSoLanLap
+            app.kqSoLanLap = uitextarea(app.nghiemTab);
+            app.kqSoLanLap.Editable = 'off';
+            app.kqSoLanLap.Position = [515 60 150 33];
 
-            % Create NoisuyTab
-            app.NoisuyTab = uitab(app.TabGroup);
-            app.NoisuyTab.Title = 'Nội Suy';
+            % Create noiSuyTab
+            app.noiSuyTab = uitab(app.TabGroup);
+            app.noiSuyTab.Title = 'Nội Suy';
 
-            % Create HoiQuyTab
-            app.HoiQuyTab = uitab(app.TabGroup);
-            app.HoiQuyTab.Title = 'Hồi Quy';
+            % Create hoiQuyTab
+            app.hoiQuyTab = uitab(app.TabGroup);
+            app.hoiQuyTab.Title = 'Hồi Quy';
 
-            % Create DaoHamTab
-            app.DaoHamTab = uitab(app.TabGroup);
-            app.DaoHamTab.Title = 'Đạo Hàm';
+            % Create daoHamTab
+            app.daoHamTab = uitab(app.TabGroup);
+            app.daoHamTab.Title = 'Đạo Hàm';
 
-            % Create TichPhanTab
-            app.TichPhanTab = uitab(app.TabGroup);
-            app.TichPhanTab.Title = 'Tích Phân';
+            % Create tichPhanTab
+            app.tichPhanTab = uitab(app.TabGroup);
+            app.tichPhanTab.Title = 'Tích Phân';
 
             % Create GioiThieuNhomTab
             app.GioiThieuNhomTab = uitab(app.TabGroup);
             app.GioiThieuNhomTab.Title = 'Giới Thiệu Nhóm';
 
+            % Create GreenFETTeamLabel
+            app.GreenFETTeamLabel = uilabel(app.GioiThieuNhomTab);
+            app.GreenFETTeamLabel.HorizontalAlignment = 'center';
+            app.GreenFETTeamLabel.FontSize = 30;
+            app.GreenFETTeamLabel.FontWeight = 'bold';
+            app.GreenFETTeamLabel.FontColor = [0 1 0];
+            app.GreenFETTeamLabel.Position = [191 408 235 37];
+            app.GreenFETTeamLabel.Text = 'GreenFET Team';
+
+            % Create Button
+            app.Button = uibutton(app.GioiThieuNhomTab, 'push');
+            app.Button.Position = [558 252 51 22];
+            app.Button.Text = {'>'; ''};
+
+            % Create Button_2
+            app.Button_2 = uibutton(app.GioiThieuNhomTab, 'push');
+            app.Button_2.Position = [32 252 51 22];
+            app.Button_2.Text = '<';
+
+            % Create Image
+            app.Image = uiimage(app.GioiThieuNhomTab);
+            app.Image.ImageClickedFcn = createCallbackFcn(app, @ImageClicked, true);
+            app.Image.VerticalAlignment = 'bottom';
+            app.Image.Position = [207 190 203 170];
+            app.Image.ImageSource = '1.jpg';
+
+            % Create ButtonGroup
+            app.ButtonGroup = uibuttongroup(app.ConBoCon);
+            app.ButtonGroup.Title = 'Button Group';
+            app.ButtonGroup.Position = [173 -55 167 106];
+
+            % Create Button_3
+            app.Button_3 = uiradiobutton(app.ButtonGroup);
+            app.Button_3.Text = 'Button';
+            app.Button_3.Position = [11 60 58 22];
+            app.Button_3.Value = true;
+
+            % Create Button2
+            app.Button2 = uiradiobutton(app.ButtonGroup);
+            app.Button2.Text = 'Button2';
+            app.Button2.Position = [11 38 65 22];
+
+            % Create Button3
+            app.Button3 = uiradiobutton(app.ButtonGroup);
+            app.Button3.Text = 'Button3';
+            app.Button3.Position = [11 16 65 22];
+
             % Show the figure after all components are created
-            app.UIFigure.Visible = 'on';
+            app.ConBoCon.Visible = 'on';
         end
     end
 
@@ -225,13 +257,13 @@ classdef app1 < matlab.apps.AppBase
     methods (Access = public)
 
         % Construct app
-        function app = app1
+        function app = project_team
 
             % Create UIFigure and components
             createComponents(app)
 
             % Register the app with App Designer
-            registerApp(app, app.UIFigure)
+            registerApp(app, app.ConBoCon)
 
             if nargout == 0
                 clear app
@@ -242,7 +274,7 @@ classdef app1 < matlab.apps.AppBase
         function delete(app)
 
             % Delete UIFigure when app is deleted
-            delete(app.UIFigure)
+            delete(app.ConBoCon)
         end
     end
 end
